@@ -11,7 +11,7 @@ class SentimentOutput extends Component {
     render() {
         return (
             <div className="resultBody">
-                <p>Sentiment Result</p>
+                <p>{this.props.tweet}</p>
             </div>
         )
     }

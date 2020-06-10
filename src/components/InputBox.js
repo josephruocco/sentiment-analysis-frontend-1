@@ -13,8 +13,10 @@ class InputBox extends Component {
     }
 
     submitTweetUrl() {
-        alert('search: ' + this.state.tweetUrl);
+        // alert('search: ' + this.state.tweetUrl);
         // call the function that calls the api 
+        this.props.passDataToLanding(this.state.tweetUrl);
+
     }
 
     handleChange(event){
