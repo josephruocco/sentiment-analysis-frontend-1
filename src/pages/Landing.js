@@ -10,12 +10,13 @@ class Landing extends Component {
         super(props);
         this.state = {
             currentTweetUrl: "",
+            result: "unknown"
         };
     };
 
     setTweetUrl = (userInput) => {
-        this.setState({currentTweetUrl: userInput})
-        // alert('parent: ' + userInput);
+        this.setState({currentTweetUrl: userInput, result: "happy"})
+        //alert('parent: ' + this.state.result);
     }
 
     render(){
@@ -24,7 +25,7 @@ class Landing extends Component {
                 <h1 className="appTitle">Sentiment Analysis</h1>
                 <div className="contentBody">
                     <InputBox passDataToLanding={this.setTweetUrl.bind(this)}/>
-                    <SentimentOutput tweet={this.state.currentTweetUrl}/>
+                    <SentimentOutput sentiment={this.state.result}/>
                 </div>
                 
             </div>
