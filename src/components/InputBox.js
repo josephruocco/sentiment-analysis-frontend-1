@@ -23,10 +23,9 @@ class InputBox extends Component {
             if(result){
                 this.props.getTweetSentiment(result);
             } else {
-                this.props.getTweetSentiment("error in getting tweet result");
+                this.props.getTweetSentiment({error:"error in getting tweet result"});
             }
         })
-        console.log("end of submit tweet");
     }
 
     handleChange(event){
