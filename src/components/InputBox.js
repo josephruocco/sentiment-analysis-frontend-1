@@ -1,5 +1,6 @@
 import React, {Component} from 'react'; 
 import '../styles/InputBox.css';
+import { getTweetSentiment } from '../actions/Tweet.js';
 
 class InputBox extends Component {
     //to get information passed to InputBox  this.props.variableName
@@ -12,14 +13,20 @@ class InputBox extends Component {
         this.submitTweetUrl = this.submitTweetUrl.bind(this);
     }
 
-    componentDidMount(){
-    }
-
     submitTweetUrl(event) {
         event.preventDefault();
         // alert('input box: ' + this.state.tweetUrl);
         // call the function that calls the api 
-        this.props.passDataToLanding(this.state.tweetUrl);
+        this.props.getTweetUrl(this.state.tweetUrl);
+        getTweetSentiment(this.state.tweetUrl)
+        .then(result => {
+            if(result){
+                this.props.getTweetSentiment(result);
+            } else {
+                this.props.getTweetSentiment("error in getting tweet result");
+            }
+        })
+        console.log("end of submit tweet");
     }
 
     handleChange(event){

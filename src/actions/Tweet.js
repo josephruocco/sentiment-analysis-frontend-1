@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const getTweetSentiment = async () => {
+export const getTweetSentiment = async (url) => {
     try {
-        //let sentimentResult = await axios.get('https://sentiment-analysis-frontend.herokuapp.com/api/tweet')
-        console.log("calling axios");
+        let result = await axios.get('https://reqres.in/api/users/2');
+        return result.data; 
     } catch (err) {
         console.log(err.response);
     }
