@@ -35,7 +35,7 @@ class InputBox extends Component {
 
     render(){
         return (
-            <div className="inputBody">
+            <div className="inputBox">
                 <form className="form-inline center-form">
                     <i className="fas fa-search" aria-hidden="true"></i>
                     <input className="form-control form-control-lg ml-3 w-75" type="text" placeholder="Enter a tweet url" value={this.state.tweetUrl} onChange={this.handleChange} aria-label="Search"></input>

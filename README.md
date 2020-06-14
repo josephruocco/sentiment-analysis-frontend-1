@@ -7,17 +7,23 @@
 
 ## Updating Search box 
 
-* Go to src/components/InputBox.js 
-* Add all your logic there in rendering the view for InputBox.js 
-
-* To edit CRUD API functions, go to src/actions/Tweet.js 
+**Go to these pages to do the following:**
+* View rendering logic: src/components/InputBox.js 
+* CRUD Backend API Calls: src/actions/Tweet.js 
+* CSS for views: src/styles/InputBox.css
 
 
 ## Updating SentimentOutput.js 
 
+* **It should not be calling any internal backend API action**
 * This simply takes data such as happy or sad and display the appropriate view. 
-* It should not be calling any internal backend API action
-* Edit the views of the page in src/components/SentimentOutput.js
+
+* View rendering logic: src/components/SentimentOutput.js
+* CSS for views: src/styles/SentimentResult.css
+
+
+
+
 
 
 

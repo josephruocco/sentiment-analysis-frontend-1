@@ -11,8 +11,10 @@ class SentimentOutput extends Component {
     renderView(){
         // read the data passed into sentiment output section to display appropriate view 
         return (
-            <div className="resultBody">
-                <p>{JSON.stringify(this.props.sentiment)}</p>
+            <div className="sentimentOutputBox">
+                <div className="center-output rounded">
+                    <p>{JSON.stringify(this.props.sentiment)}</p>
+                </div> 
             </div>
         );
     }
