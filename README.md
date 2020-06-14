@@ -1,3 +1,34 @@
+# Sentiment Analysis For Tweets - Frontend 
+
+1. clone app 
+2. cd into repository
+3. npm install 
+4. "npm start" to run app in localhost
+
+## Updating Search box 
+
+**Go to these pages to do the following:**
+* View rendering logic: src/components/InputBox.js 
+* CRUD Backend API Calls: src/actions/Tweet.js 
+* CSS for views: src/styles/InputBox.css
+
+
+## Updating SentimentOutput.js 
+
+* **It should not be calling any internal backend API action**
+* This simply takes data such as happy or sad and display the appropriate view. 
+
+* View rendering logic: src/components/SentimentOutput.js
+* CSS for views: src/styles/SentimentResult.css
+
+
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
