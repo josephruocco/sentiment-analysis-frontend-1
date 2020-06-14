@@ -52,7 +52,7 @@ class InputBox extends Component {
                     <input 
                         className="form-control form-control-lg ml-3 w-75" 
                         type="text" 
-                        placeholder="Enter a tweet url Ex: https://twitter.com/..." 
+                        placeholder="Enter https://twitter.com/username/status/id-number" 
                         value={this.state.tweetUrl} 
                         onChange={this.handleChange} 
                         aria-label="Search">
