@@ -16,12 +16,8 @@ class Landing extends Component {
 
     setTweetUrl = (userInput) => {
         this.setState({currentTweetUrl: userInput});
-        //alert('parent: ' + this.state.result);
     }
 
-    // get result from the sentiment analysis internal api
-    // save it into the temporary state result
-    // state is then automatically passed to the sentiment output section
     setResult = (tweetResult) => {
         this.setState({result: [tweetResult]});        
     }
@@ -31,7 +27,7 @@ class Landing extends Component {
             <div className="fill">
                 <h1 className="appTitle">Sentiment Analysis</h1>
                 <div className="contentBody">
-                    <InputBox getTweetUrl={this.setTweetUrl.bind(this)} getTweetSentiment={this.setResult.bind(this)}/>
+                    <InputBox saveTweetUrlToLanding={this.setTweetUrl.bind(this)} saveSentimentToLanding={this.setResult.bind(this)}/>
                     <SentimentOutput sentiment={this.state.result}/>
                 </div>
                 
