@@ -5,6 +5,8 @@
 3. npm install 
 4. "npm start" to run app in localhost
 
+5. **Before you merge the request, please submit a pull request.** 
+
 ## Updating Search box 
 
 **Go to these pages to do the following:**
