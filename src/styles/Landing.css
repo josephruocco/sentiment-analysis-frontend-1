@@ -30,14 +30,19 @@ html, body {
 
 .bg-content {
     position: fixed;
-    background-image: url("../assets/colorful-waves.png");
+    /* background-image: url("../assets/colorful-waves.png"); */
     opacity: 80%;
-    filter: grayscale(80%) blur(0px);
+    filter: grayscale(70%) blur(0px);
     overflow: hidden;
-    min-height: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50%;
+    /* min-height: 100%; */
+    /* background-repeat: no-repeat;
+    background-position: center; */
+    /* background-size: contain; */
     /* background-size: cover; */
     /* background-position: center center;
     background-size: cover;
