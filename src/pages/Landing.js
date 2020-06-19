@@ -27,8 +27,6 @@ class Landing extends Component {
     render(){
         return (
             <div className="fill">
-                {/* <section className="bg-content fill">
-                </section> */}
                 <img  src={bgImage} className="bg-content" alt="bg-image"/>
                 <div className="main-content"> 
                     <h1 className="appTitle">Sentiment Analysis</h1>  

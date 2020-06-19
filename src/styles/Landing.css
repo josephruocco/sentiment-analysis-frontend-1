@@ -30,6 +30,7 @@ html, body {
 
 .bg-content {
     position: fixed;
+    width: 100%; 
     /* background-image: url("../assets/colorful-waves.png"); */
     /* opacity: 80%;
     filter: grayscale(70%) blur(0px);
