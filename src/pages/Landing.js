@@ -2,7 +2,7 @@ import React, { useState, useEffect, Component } from 'react';
 import InputBox from '../components/InputBox';
 import SentimentOutput from '../components/SentimentOutput';
 import '../styles/Landing.css';
-import '../assets/colorful-waves.png';
+
 
 
 
