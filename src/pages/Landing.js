@@ -29,7 +29,7 @@ class Landing extends Component {
             <div className="fill">
                 {/* <section className="bg-content fill">
                 </section> */}
-                <img  src={bgImage} className="bg-content" alt="fireSpot"/>
+                <img  src={bgImage} className="bg-content" alt="bg-image"/>
                 <div className="main-content"> 
                     <h1 className="appTitle">Sentiment Analysis</h1>  
                     <div className="contentBody">
