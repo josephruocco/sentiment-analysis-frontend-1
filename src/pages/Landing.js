@@ -25,12 +25,15 @@ class Landing extends Component {
     render(){
         return (
             <div className="fill">
-                <h1 className="appTitle">Sentiment Analysis</h1>
-                <div className="contentBody">
-                    <InputBox saveTweetUrlToLanding={this.setTweetUrl.bind(this)} saveSentimentToLanding={this.setResult.bind(this)}/>
-                    <SentimentOutput sentiment={this.state.result}/>
-                </div>
-                
+                <section className="bg-content fill">
+                </section>
+                <div className="main-content"> 
+                    <h1 className="appTitle">Sentiment Analysis</h1>
+                    <div className="contentBody">
+                        <InputBox saveTweetUrlToLanding={this.setTweetUrl.bind(this)} saveSentimentToLanding={this.setResult.bind(this)}/>
+                        <SentimentOutput sentiment={this.state.result}/>
+                    </div>
+                </div> 
             </div>
         );
     }
