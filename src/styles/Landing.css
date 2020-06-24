@@ -5,35 +5,21 @@ html, body {
     background-color:#edf0f5;
 }
 
-.fill {
+.landing-body {
     width: 100%;
     min-height: 100vh;
     height: 100vh;
-    
     color: #585858;
 }
 
-.appTitle {
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
-}
-
-.contentBody {
-    width: auto;
-    height: 100%;
-    display: flex; 
-    justify-content: space-around;
-    align-content: center;
-    flex-direction: column;
-    margin: 1rem 1rem 1rem 1rem;
-}
-
 .bg-lines {
+    z-index: 10;
+    position: fixed;
     filter:grayscale(100%);
     opacity: .15;
     width: 200%;
     height: 200%;
-    position: fixed;
+    position: fixed; 
     overflow: hidden;
     top: 50%;
     left: 50%;
@@ -53,6 +39,25 @@ html, body {
 }
 
 
+
+.appTitle {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+
+.contentBody {
+    width: auto;
+    height: 100%;
+    display: flex; 
+    justify-content: space-around;
+    align-content: center;
+    flex-direction: column;
+    margin: 1rem 1rem 1rem 1rem;
+}
+
+
+
 .main-content {
     position: absolute;
     width: 100%; 
@@ -60,4 +65,4 @@ html, body {
     margin: auto;
     top: 0; bottom: 0;
     left: 0; right: 0;
-}
+} 

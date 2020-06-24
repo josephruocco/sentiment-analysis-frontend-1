@@ -27,7 +27,7 @@ class Landing extends Component {
 
     render(){
         return (
-            <div className="fill">
+            <div className="landing-body">
                 <img src={bgGrid} className="bg-lines" alt="lines-image"/>
                 <img  src={bgImage} className="bg-content" alt="bg-image"/>
                 <div className="main-content"> 
