@@ -1,5 +1,6 @@
 .sentimentOutputBox {
     width: 100%;
+    z-index: 18;
     /* width: auto; */
     height: 50%;
     /* margin: 0rem 5rem 0rem 5rem; */

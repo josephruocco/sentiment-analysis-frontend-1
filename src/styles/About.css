@@ -1,0 +1,13 @@
+.about-body {
+    width: 100%;
+    min-height: 100vh;
+    height: 100vh;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.card-container {
+    width: 18rem;
+    margin: 10px 10px 10px 10px;
+}
