@@ -8,6 +8,12 @@
 }
 
 .card-container {
+    height: 30rem;
     width: 18rem;
     margin: 10px 10px 10px 10px;
+}
+
+.card-img-top {
+    height: 18rem;
+    width: 100%;
 }
