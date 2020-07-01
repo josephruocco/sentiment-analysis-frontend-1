@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Component } from 'react';
 import profileImage from '../assets/profile.png';
+import mk from '../assets/muskan.jpg';
 import '../styles/About.css';
 
 
@@ -14,7 +15,7 @@ class About extends Component {
         return (
             <div className="about-body">
                 <div className="card card-container">
-                    <img src={profileImage} className="card-img-top" alt="Card image cap"/>
+                    <img src={mk} className="card-img-top" alt="Card image cap"/>
                     <div className="card-body">
                         <h5 class="card-title">Muskan Kapoor</h5>
                         <p className="card-text">Lead and developed project direction and goals.</p>
