@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Gauge from "./Gauge";
+import '../styles/SentimentResult.css'
 
 const initialEmotions = {
     sadness: 0,
@@ -10,9 +11,10 @@ const initialEmotions = {
     joy: 0
 };
 
-export default class SentimentOutput extends Component {
+class SentimentOutput extends Component {
     constructor(props) {
 	super(props);
+	this.renderView = this.renderView.bind(this);
 	this.state = {
 	    sentenceId: -1,
 	    emotions: { ...initialEmotions }
@@ -20,38 +22,54 @@ export default class SentimentOutput extends Component {
     }
 
     setEmotions = () => {
-	const sentimentAnalysis =
-	      this.state.sentenceId === -1
-              ? this.props.sentiment["document_tone"]
-              : this.props.sentiment["sentences_tone"][this.state.sentenceId];
+	if(this.props.sentiment){
+	    const sentimentAnalysis = this.state.sentenceId === -1  ? this.props.sentiment["document_tone"]  : this.props.sentiment["sentences_tone"][this.state.sentenceId];
 
-	let newEmotions = {};
+	    let newEmotions = {};
 
-	sentimentAnalysis.tones.forEach(
-	    analysis =>
-		(newEmotions = { ...newEmotions, [analysis.tone_id]: analysis.score })
-	);
+	    sentimentAnalysis.tones.forEach(
+		analysis =>
+		    (newEmotions = { ...newEmotions, [analysis.tone_id]: analysis.score })
+	    );
 
-	this.setState(prevState => {
-	    return { emotions: { ...initialEmotions, ...newEmotions } };
-	});
+	    this.setState(prevState => {
+		return { emotions: { ...initialEmotions, ...newEmotions } };
+	    });
+	}
     };
 
-    componentDidMount = () => this.setEmotions();
-
-    render() {
+    
+    componentDidMount = () => {
+	if(this.props.sentment)
+	    this.setEmotions();
+    }
+    
+    
+    renderView() {
 	return (
 		<>
 		{Object.keys(initialEmotions).map(emotion => {
 		    return (
-			    <Gauge
+			    <div className="sentimentOutputBox">
+			    <div className="center-output rounded">
+			    <Gauge 
 			value={this.state.emotions[emotion]}
 			title={`sentiment analysis ${emotion}`}
 			key={emotion}
 			    />
+			    </div> 
+			    </div>
 		    );
 		})}
 	    </>
 	);
     }
+    
+    render() {
+        if(this.props.sentiment){
+            return this.renderView();
+        }   
+    }
 }
+
+export default SentimentOutput;
