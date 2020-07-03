@@ -41,8 +41,9 @@ class SentimentOutput extends Component {
 
     
     componentDidMount = () => {
-	if(this.props.sentment)
+	if(this.props.sentment){
 	    this.setEmotions();
+	} 
     }
     
     
