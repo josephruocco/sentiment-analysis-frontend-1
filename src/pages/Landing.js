@@ -13,7 +13,7 @@ class Landing extends Component {
         super(props);
         this.state = {
             currentTweetUrl: "",
-            result: ["waiting for input"]
+            result: []
         };
     };
 
