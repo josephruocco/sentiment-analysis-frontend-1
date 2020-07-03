@@ -39,26 +39,27 @@ class SentimentOutput extends Component {
 	}
     };
 
-    
+
     componentDidMount = () => {
-	if(this.props.sentment){
-	    this.setEmotions();
-	} 
+	if(this.props.sentment) this.setEmotions();
     }
-    
-    
+
+    componentDidUpdate = (prevProps, prevState) => {
+	if (this.props.sentiment !== prevProps.sentiment) this.setEmotions();
+    };
+
     renderView() {
 	return (
 		<>
 		{Object.keys(initialEmotions).map(emotion => {
 		    return (
-			   
-			    <Gauge 
+
+			    <Gauge
 			value={this.state.emotions[emotion]}
 			title={`sentiment analysis ${emotion}`}
 			key={emotion}
 			    />
-			   
+
 		    );
 		})}
 	    </>
@@ -66,7 +67,7 @@ class SentimentOutput extends Component {
     }
 
     waitRender = () => <div>[Waiting for input]</div>;
-    
+
     render() {
 	if(this.props.sentiment){
 	    return this.renderView();

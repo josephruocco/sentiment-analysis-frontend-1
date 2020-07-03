@@ -13,7 +13,7 @@ class Landing extends Component {
         super(props);
         this.state = {
             currentTweetUrl: "",
-            result: []
+            result: null
         };
     };
 
@@ -22,22 +22,22 @@ class Landing extends Component {
     }
 
     setResult = (tweetResult) => {
-        this.setState({result: [tweetResult]});        
+        this.setState({result: tweetResult});
     }
 
     render(){
         return (
-            <div className="landing-body">
+		<div className="landing-body">
                 <img src={bgGrid} className="bg-lines" alt="lines-image"/>
                 <img  src={bgImage} className="bg-content" alt="bg-image"/>
-                <div className="main-content"> 
-                    <h1 className="appTitle">Sentiment Analysis</h1>  
-                    <div className="contentBody">
-                        <InputBox saveTweetUrlToLanding={this.setTweetUrl.bind(this)} saveSentimentToLanding={this.setResult.bind(this)}/>
-                        <SentimentOutput sentiment={this.state.result}/>
-                    </div>
-                </div> 
-            </div>
+                <div className="main-content">
+                <h1 className="appTitle">Sentiment Analysis</h1>
+                <div className="contentBody">
+                <InputBox saveTweetUrlToLanding={this.setTweetUrl.bind(this)} saveSentimentToLanding={this.setResult.bind(this)}/>
+                <SentimentOutput sentiment={this.state.result}/>
+                </div>
+                </div>
+		</div>
         );
     }
 }
