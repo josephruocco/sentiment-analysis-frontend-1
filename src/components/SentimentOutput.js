@@ -8,6 +8,7 @@ const initialEmotions = {
     anger: 0,
     fear: 0,
     tentative: 0,
+    confident: 0,
     joy: 0
 };
 
@@ -50,25 +51,28 @@ class SentimentOutput extends Component {
 		<>
 		{Object.keys(initialEmotions).map(emotion => {
 		    return (
-			    <div className="sentimentOutputBox">
-			    <div className="center-output rounded">
+			   
 			    <Gauge 
 			value={this.state.emotions[emotion]}
 			title={`sentiment analysis ${emotion}`}
 			key={emotion}
 			    />
-			    </div> 
-			    </div>
+			   
 		    );
 		})}
 	    </>
 	);
     }
+
+    waitRender = () => <div>[Waiting for input]</div>;
     
     render() {
-        if(this.props.sentiment){
-            return this.renderView();
-        }   
+	if(this.props.sentiment){
+	    return this.renderView();
+	}
+	else{
+	    return this.waitRender();
+	}
     }
 }
 
