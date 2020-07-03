@@ -53,13 +53,15 @@ class SentimentOutput extends Component {
 		<>
 		{Object.keys(initialEmotions).map(emotion => {
 		    return (
-
+			    <div className="sentimentOutputBox">
+			    <div className="center-output rounded">
 			    <Gauge
 			value={this.state.emotions[emotion]}
 			title={`sentiment analysis ${emotion}`}
 			key={emotion}
 			    />
-
+			    </div>
+			    </div>
 		    );
 		})}
 	    </>
