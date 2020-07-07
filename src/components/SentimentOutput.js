@@ -23,28 +23,28 @@ class SentimentOutput extends Component {
     }
 
     setEmotions = () => {
-		if(this.props.sentiment && this.props.sentiment.length > 0){
-			const sentimentAnalysis = this.state.sentenceId === -1  ? this.props.sentiment[0]["document_tone"]  : this.props.sentiment[0]["sentences_tone"][this.state.sentenceId];
+		const sentimentAnalysis = this.state.sentenceId === -1  ? this.props.sentiment[0]["document_tone"]  : this.props.sentiment[0]["sentences_tone"][this.state.sentenceId];
 
-			let newEmotions = {};
+		let newEmotions = {};
 
-			if(sentimentAnalysis.tones){
-				console.log(sentimentAnalysis.tones);
-				sentimentAnalysis.tones.forEach(
-					analysis => (newEmotions = { ...newEmotions, [analysis.tone_id]: analysis.score })
-				);
-			}
-			
+		if(sentimentAnalysis.tones){
+			console.log(sentimentAnalysis.tones);
+			sentimentAnalysis.tones.forEach(
+				analysis => (newEmotions = { ...newEmotions, [analysis.tone_id]: analysis.score })
+			);
+		}
+		
 
-			this.setState(prevState => {
+		this.setState(prevState => {
 			return { emotions: { ...initialEmotions, ...newEmotions } };
-			});
-		};
+		});
 	}
 
 
     componentDidMount = () => {
-	if(this.props.sentment) this.setEmotions();
+		if(this.props.sentment && this.props.sentiment.length > 0 && this.props.sentiment[0]["document_tone"]) {
+			this.setEmotions();
+		}
     }
 
     componentDidUpdate = (prevProps, prevState) => {
