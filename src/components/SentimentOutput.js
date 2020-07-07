@@ -23,21 +23,24 @@ class SentimentOutput extends Component {
     }
 
     setEmotions = () => {
-	if(this.props.sentiment){
-	    const sentimentAnalysis = this.state.sentenceId === -1  ? this.props.sentiment["document_tone"]  : this.props.sentiment["sentences_tone"][this.state.sentenceId];
+		if(this.props.sentiment && this.props.sentiment.length > 0){
+			const sentimentAnalysis = this.state.sentenceId === -1  ? this.props.sentiment[0]["document_tone"]  : this.props.sentiment[0]["sentences_tone"][this.state.sentenceId];
 
-	    let newEmotions = {};
+			let newEmotions = {};
 
-	    sentimentAnalysis.tones.forEach(
-		analysis =>
-		    (newEmotions = { ...newEmotions, [analysis.tone_id]: analysis.score })
-	    );
+			if(sentimentAnalysis.tones){
+				console.log(sentimentAnalysis.tones);
+				sentimentAnalysis.tones.forEach(
+					analysis => (newEmotions = { ...newEmotions, [analysis.tone_id]: analysis.score })
+				);
+			}
+			
 
-	    this.setState(prevState => {
-		return { emotions: { ...initialEmotions, ...newEmotions } };
-	    });
+			this.setState(prevState => {
+			return { emotions: { ...initialEmotions, ...newEmotions } };
+			});
+		};
 	}
-    };
 
 
     componentDidMount = () => {
@@ -53,13 +56,16 @@ class SentimentOutput extends Component {
 			<div className="sentimentOutputBox">
 				<div className="center-output rounded">
 					{Object.keys(initialEmotions).map(emotion => {
-						return (
-							<Gauge
-								value={this.state.emotions[emotion]}
-								title={`${emotion}`}
-								key={emotion}
-							/>
-						);
+						if(this.state.emotions[emotion] > 0 ) {
+							return (
+								<Gauge
+									value={this.state.emotions[emotion]}
+									title={`${emotion}`}
+									key={emotion}
+								/>
+
+							);
+						}
 					})}
 				</div>
 			</div>
