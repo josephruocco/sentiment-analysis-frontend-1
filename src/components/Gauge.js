@@ -7,8 +7,8 @@ export default class Gauge extends Component {
 		<ReactSpeedometer
             width={325}
             needleHeightRatio={0.7}
-            value={this.props.value * 1000}
-            currentValueText={`${this.props.title}: ${this.props.value * 100}%`}
+			value={this.props.value * 1000}
+			currentValueText={`${this.props.title}: ${this.props.value * 100}%`}
             customSegmentLabels={[
 		{
 		    text: "Very Low",

@@ -28,7 +28,6 @@ class SentimentOutput extends Component {
 		let newEmotions = {};
 
 		if(sentimentAnalysis.tones){
-			console.log(sentimentAnalysis.tones);
 			sentimentAnalysis.tones.forEach(
 				analysis => (newEmotions = { ...newEmotions, [analysis.tone_id]: analysis.score })
 			);
