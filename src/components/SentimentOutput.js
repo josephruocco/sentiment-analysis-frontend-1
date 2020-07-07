@@ -49,24 +49,22 @@ class SentimentOutput extends Component {
     };
 
     renderView() {
-	return (
-		<>
-		{Object.keys(initialEmotions).map(emotion => {
-		    return (
-			    <div className="sentimentOutputBox">
-			    <div className="center-output rounded">
-			    <Gauge
-			value={this.state.emotions[emotion]}
-			title={`sentiment analysis ${emotion}`}
-			key={emotion}
-			    />
-			    </div>
-			    </div>
-		    );
-		})}
-	    </>
-	);
-    }
+		return (
+			<div className="sentimentOutputBox">
+				<div className="center-output rounded">
+					{Object.keys(initialEmotions).map(emotion => {
+						return (
+							<Gauge
+								value={this.state.emotions[emotion]}
+								title={`${emotion}`}
+								key={emotion}
+							/>
+						);
+					})}
+				</div>
+			</div>
+		);
+	}
 
     waitRender = () => <div>[Waiting for input]</div>;
 

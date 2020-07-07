@@ -5,7 +5,7 @@ export default class Gauge extends Component {
     render() {
 	return (
 		<ReactSpeedometer
-            width={500}
+            width={300}
             needleHeightRatio={0.7}
             value={this.props.value * 1000}
             currentValueText={`${this.props.title}: ${this.props.value * 100}%`}
@@ -41,7 +41,7 @@ export default class Gauge extends Component {
             needleTransitionDuration={3333}
             needleTransition="easeElastic"
             needleColor={"#90f2ff"}
-            textColor={"#d8dee9"}
+            textColor={"#000000"}
 		/>
 	);
     }
