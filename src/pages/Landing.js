@@ -13,7 +13,7 @@ class Landing extends Component {
         super(props);
         this.state = {
             currentTweetUrl: "",
-            result: []
+            result: null
         };
     };
 
@@ -22,7 +22,7 @@ class Landing extends Component {
     }
 
     setResult = (tweetResult) => {
-        this.setState({result: [tweetResult]});        
+        this.setState({result: tweetResult});        
     }
 
     render(){

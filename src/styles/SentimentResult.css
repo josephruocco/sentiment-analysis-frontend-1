@@ -2,7 +2,7 @@
     width: 100%;
     z-index: 18;
     /* width: auto; */
-    height: 50%;
+    height: 70%;
     /* margin: 0rem 5rem 0rem 5rem; */
     color: black;
     display: flex; 
@@ -13,5 +13,14 @@
     width: 85%;
     background-color: white;
     opacity: 0.8;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
 
+.align-guage {
+    display: inline-block;
+    border: solid 1px white;
+    width: 100px;
 }
