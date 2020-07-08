@@ -47,7 +47,9 @@ class SentimentOutput extends Component {
     }
 
     componentDidUpdate = (prevProps, prevState) => {
-	if (this.props.sentiment !== prevProps.sentiment) this.setEmotions();
+		if (this.props.sentiment !== prevProps.sentiment && this.props.sentiment[0]["document_tone"]) {
+			this.setEmotions();
+		}
     };
 
     renderView() {
@@ -71,15 +73,26 @@ class SentimentOutput extends Component {
 		);
 	}
 
-    waitRender = () => <div>[Waiting for input]</div>;
+    waitRender(){
+		return (
+			<div className="sentimentOutputBox">
+				<div className="center-output rounded">
+					<Gauge
+						value={0}
+						title={`waiting for input`}
+					/>
+				</div>
+			</div>
+		);
+	}
 
     render() {
-	if(this.props.sentiment){
-	    return this.renderView();
-	}
-	else{
-	    return this.waitRender();
-	}
+		if(this.props.sentiment && this.props.sentiment.length > 0 && this.props.sentiment[0].document_tone){
+			return this.renderView();
+		}
+		else{
+			return this.waitRender();
+		}
     }
 }
 
