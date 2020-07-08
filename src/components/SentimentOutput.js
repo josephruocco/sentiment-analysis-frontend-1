@@ -23,7 +23,7 @@ class SentimentOutput extends Component {
     }
 
     setEmotions = () => {
-		const sentimentAnalysis = this.state.sentenceId === -1  ? this.props.sentiment[0]["document_tone"]  : this.props.sentiment[0]["sentences_tone"][this.state.sentenceId];
+		const sentimentAnalysis = this.state.sentenceId === -1  ? this.props.sentiment["document_tone"]  : this.props.sentiment["sentences_tone"][this.state.sentenceId];
 
 		let newEmotions = {};
 
@@ -41,13 +41,13 @@ class SentimentOutput extends Component {
 
 
     componentDidMount = () => {
-		if(this.props.sentment && this.props.sentiment.length > 0 && this.props.sentiment[0]["document_tone"]) {
+		if(this.props.sentment && this.props.sentiment["document_tone"]) {
 			this.setEmotions();
 		}
     }
 
     componentDidUpdate = (prevProps, prevState) => {
-		if (this.props.sentiment !== prevProps.sentiment && this.props.sentiment[0]["document_tone"]) {
+		if (this.props.sentiment !== prevProps.sentiment && this.props.sentiment && this.props.sentiment["document_tone"]) {
 			this.setEmotions();
 		}
     };
@@ -87,7 +87,7 @@ class SentimentOutput extends Component {
 	}
 
     render() {
-		if(this.props.sentiment && this.props.sentiment.length > 0 && this.props.sentiment[0].document_tone){
+		if(this.props.sentiment && this.props.sentiment.document_tone){
 			return this.renderView();
 		}
 		else{
