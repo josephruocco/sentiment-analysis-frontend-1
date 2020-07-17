@@ -1,4 +1,8 @@
 import React, { useState, useEffect, Component } from 'react';
+import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
+import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
+import SentimentVerySatisfiedRoundedIcon from '@material-ui/icons/SentimentVerySatisfiedRounded';
+import { green } from '@material-ui/core/colors';
 import InputBox from '../components/InputBox';
 import SentimentOutput from '../components/SentimentOutput';
 import bgImage from '../assets/colorful-waves.png';
