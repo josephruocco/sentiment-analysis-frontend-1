@@ -10,7 +10,7 @@
 }
 
 .center-output {
-    width: 85%;
+    width: 90%;
     background-color: white;
     opacity: 0.8;
     display: flex;
@@ -23,4 +23,21 @@
     display: inline-block;
     border: solid 1px white;
     width: 100px;
+}
+
+.tweet-text-wrapper {
+    width: 30%;
+    height: 100%;
+    padding: 10px 10px 10px 10px;
+    border-right: lightgray;
+    border-style: dotted;
+    border-width: 0px 2px 0px 0px;
+}
+
+.sentiment-display-wrapper {
+    width: 70%; 
+    height: 100%;
+    padding: 10px 10px 10px 10px;
+    display: flex;
+    flex-wrap: wrap;
 }
