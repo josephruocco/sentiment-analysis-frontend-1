@@ -4,14 +4,19 @@
     height: auto;
     background-color: white;
     margin: 6rem auto auto auto;
-    padding: 2rem 15rem 2rem 15rem;
+    padding: 2rem 2rem 2rem 2rem;
     align-content: center;
     text-align: center;
 }
 
-
+.sentiment-table {
+    width: 70%;
+    height: auto; 
+    margin: 2rem auto 2rem auto;
+    align-content: center;
+}
 .sentiment-type {
-    width: 10%;
+    width: 20%;
     text-align: right;
 }
 
