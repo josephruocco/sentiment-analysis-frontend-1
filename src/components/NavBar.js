@@ -8,6 +8,7 @@ const navbar = props => (
     <nav className="myNavBar">
         <ul className="navBarLinks">
           <li><a href="/">Home</a></li>
+          <li><a href="/sentiments">Sentiment Types</a></li>
           <li><a href="/about">About Us</a></li>
         </ul>
     </nav>

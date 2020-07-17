@@ -1,0 +1,21 @@
+.sentiment-body {
+    width: 90%;
+    min-height: 100vh;
+    height: auto;
+    background-color: white;
+    margin: 6rem auto auto auto;
+    padding: 2rem 15rem 2rem 15rem;
+    align-content: center;
+    text-align: center;
+}
+
+
+.sentiment-type {
+    width: 10%;
+    text-align: right;
+}
+
+.sentiment-def {
+    text-align: left;
+    align-content: center;
+}
