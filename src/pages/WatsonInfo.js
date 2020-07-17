@@ -14,7 +14,7 @@ class WatsonInfo extends Component {
     render(){
         return (
             <div className="sentiment-body rounded">
-                <h1><a href={SentimenDef.source}>@Watson</a> Sentiments</h1>
+                <h1 className="sentiment-title"><a href={SentimenDef.source}>@Watson</a> Sentiments</h1>
                 <div className="sentiment-table">
                     <table class="table">
                         <tbody>
