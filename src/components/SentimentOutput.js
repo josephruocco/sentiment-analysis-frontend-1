@@ -126,7 +126,7 @@ class SentimentOutput extends Component {
 			<div className="sentimentOutputBox">
 				<div className="center-output rounded">
 					<div className="tweet-text-wrapper">
-						<h3 onClick={() => this.setDocTones()}>Overall Tweet Sentiment</h3>
+						<h3 onClick={() => this.setDocTones()} className="sentence-hover">Overall Tweet Sentiment</h3>
 						{this.renderTweetText()}
 					</div>
 					
@@ -141,7 +141,7 @@ class SentimentOutput extends Component {
 			<div className="sentimentOutputBox">
 				<div className="center-output rounded">
 					<div className="tweet-text-wrapper">
-						<h3 onClick={() => this.setDocTones()}>Overall Tweet Sentiment</h3>
+						<h3 onClick={() => this.setDocTones()} className="sentence-hover">Overall Tweet Sentiment</h3>
 						{this.renderTweetText()}
 					</div>
 					
