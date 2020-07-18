@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Gauge from "./Gauge";
+import {SentimenDef} from './SentimentDef';
 import '../styles/SentimentResult.css'
 
 const initialEmotions = {
@@ -93,10 +94,13 @@ class SentimentOutput extends Component {
 				<div className="sentiment-display-wrapper">
 					{this.state.sentenceTones.map((emotion) => {
 						return (
-							<Gauge
-								value={emotion.score}
-								title={emotion.tone_name}
-							/>
+							<span title={SentimenDef[emotion.tone_id]}>
+								<Gauge
+									value={emotion.score}
+									title={emotion.tone_name}
+								/>
+							</span>
+							
 						);
 					})}
 				</div>
@@ -118,7 +122,7 @@ class SentimentOutput extends Component {
 			<div className="sentimentOutputBox">
 				<div className="center-output rounded">
 					<div className="tweet-text-wrapper">
-						<h3 onClick={() => this.setDocTones()}>Overall Tweet Sentiment</h3>
+						<h3 onClick={() => this.setDocTones()}>Full Tweet Text</h3>
 						{this.renderTweetText()}
 					</div>
 					
@@ -141,12 +145,13 @@ class SentimentOutput extends Component {
 						{Object.keys(initialEmotions).map(emotion => {
 							if(this.state.emotions[emotion] > 0 ) {
 								return (
-									<Gauge
-										value={this.state.emotions[emotion]}
-										title={`${emotion}`}
-										key={emotion}
-									/>
-
+									<span title={SentimenDef[emotion]}>
+										<Gauge
+											value={this.state.emotions[emotion]}
+											title={`${emotion}`}
+											key={emotion}
+										/>
+									</span>
 								);
 							}
 						})}
@@ -161,7 +166,7 @@ class SentimentOutput extends Component {
 			<div className="sentimentOutputBox">
 				<div className="center-output rounded">
 					<div className="tweet-text-wrapper">
-						<h3>Overall Tweet Sentiment</h3>
+						<h3>Tweet Text</h3>
 					</div>
 					<div className="sentiment-display-wrapper">
 						<Gauge
