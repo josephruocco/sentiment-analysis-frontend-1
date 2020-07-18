@@ -76,7 +76,11 @@ class SentimentOutput extends Component {
 				<div>
 					{
 						this.props.sentiment.sentences_tone.map((sent) => {
-							return <p onClick={() => this.setSentenceTones(sent.tones)}>{sent.text}</p>
+							return (
+								<p onClick={() => this.setSentenceTones(sent.tones)} className="sentence-hover">
+									{sent.text}
+								</p>
+							);
 						 })
 					}
 				</div>
@@ -122,7 +126,7 @@ class SentimentOutput extends Component {
 			<div className="sentimentOutputBox">
 				<div className="center-output rounded">
 					<div className="tweet-text-wrapper">
-						<h3 onClick={() => this.setDocTones()}>Full Tweet Text</h3>
+						<h3 onClick={() => this.setDocTones()}>Overall Tweet Sentiment</h3>
 						{this.renderTweetText()}
 					</div>
 					

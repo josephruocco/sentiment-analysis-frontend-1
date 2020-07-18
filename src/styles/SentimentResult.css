@@ -41,3 +41,7 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.sentence-hover {
+    cursor: pointer;
+}
