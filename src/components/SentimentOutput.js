@@ -43,7 +43,7 @@ class SentimentOutput extends Component {
 		
 
 		this.setState(prevState => {
-			return { emotions: { ...initialEmotions, ...newEmotions } };
+			return { documentView:true, sentenceTones: [], emotions: { ...initialEmotions, ...newEmotions } };
 		});
 	}
 
