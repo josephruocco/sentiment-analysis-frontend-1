@@ -2,7 +2,8 @@
     width: 100%;
     z-index: 18;
     /* width: auto; */
-    height: 80%;
+    min-height: 70%;
+    height: auto;
     /* margin: 0rem 5rem 0rem 5rem; */
     color: black;
     display: flex; 
@@ -38,8 +39,10 @@
 
 .sentiment-display-wrapper {
     width: 65%; 
-    height: 100%;
-    padding: 10px 0px 10px 0px;
+    min-height: 70%;
+    height: auto;
+    padding: 0px 0px 0px 0px;
+    margin: 10px 0px 10px 0px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
