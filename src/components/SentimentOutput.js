@@ -26,6 +26,7 @@ class SentimentOutput extends Component {
 		this.renderView = this.renderView.bind(this);
 		this.setSentenceTones = this.setSentenceTones.bind(this);
 		this.setDocTones = this.setDocTones.bind(this);
+		this.renderTweetTextView = this.renderTweetTextView.bind(this);
     }
 
     setEmotions = () => {
@@ -83,7 +84,7 @@ class SentimentOutput extends Component {
 		return emotion;
 	}
 
-	renderTweetText(){
+	getTweetText(){
 		if(this.props.sentiment.sentences_tone){
 			return(
 				<div>
@@ -93,7 +94,10 @@ class SentimentOutput extends Component {
 							var emotion = this.getMaxScoreEmotion(sent.tones); 					
 
 							return (
-								<p onClick={() => this.setSentenceTones(sent.tones)} className={`sentence-hover ${emotion}`}>
+								<p 
+								onClick={() => this.setSentenceTones(sent.tones)} 
+								className={`sentence-hover ${emotion}`}
+								title={emotion}>
 									{sent.text}
 								</p>
 							);
@@ -103,12 +107,13 @@ class SentimentOutput extends Component {
 			);
 		} 
 
+		var docTones = this.getMaxScoreEmotion(this.props.sentiment.document_tone.tones);
 		return(
-			<p>{this.props.sentiment.tweet_text}</p>
+			<p className={docTones} title={docTones}>{this.props.sentiment.tweet_text}</p>
 		);
 	}
 
-	getSentenceTones(){
+	renderSentenceTonesView(){
 		if(this.state.sentenceTones.length > 0 ){
 			return(
 				<div className="sentiment-display-wrapper">
@@ -137,16 +142,27 @@ class SentimentOutput extends Component {
 		
 	}
 
+	renderTweetTextView(){
+		var docTones = this.getMaxScoreEmotion(this.props.sentiment.document_tone.tones);
+		return(
+			<div className="tweet-text-wrapper">
+				<h3 
+					onClick={() => this.setDocTones()} 
+					className={`sentence-hover sent-title ${docTones}`}
+					title={docTones}
+				>Overall Tweet Sentiment</h3>
+				{this.getTweetText()}
+			</div>
+		);
+	}
+
 	renderSentenceView(){
 		return (
 			<div className="sentimentOutputBox">
 				<div className="center-output rounded">
-					<div className="tweet-text-wrapper">
-						<h3 onClick={() => this.setDocTones()} className="sentence-hover sent-title">Overall Tweet Sentiment</h3>
-						{this.renderTweetText()}
-					</div>
+					{this.renderTweetTextView()}
 					
-					{this.getSentenceTones()}
+					{this.renderSentenceTonesView()}
 				</div>
 			</div>
 		);
@@ -156,10 +172,7 @@ class SentimentOutput extends Component {
 		return (
 			<div className="sentimentOutputBox">
 				<div className="center-output rounded">
-					<div className="tweet-text-wrapper">
-						<h3 onClick={() => this.setDocTones()} className="sentence-hover sent-title">Overall Tweet Sentiment</h3>
-						{this.renderTweetText()}
-					</div>
+					{this.renderTweetTextView()}
 					
 					<div className="sentiment-display-wrapper">
 						{Object.keys(initialEmotions).map(emotion => {
