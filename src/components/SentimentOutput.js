@@ -27,6 +27,7 @@ class SentimentOutput extends Component {
 		this.setSentenceTones = this.setSentenceTones.bind(this);
 		this.setDocTones = this.setDocTones.bind(this);
 		this.renderTweetTextView = this.renderTweetTextView.bind(this);
+		this.renderNoDocTonesView = this.renderNoDocTonesView.bind(this);
     }
 
     setEmotions = () => {
@@ -170,15 +171,17 @@ class SentimentOutput extends Component {
 
 	renderNoDocTonesView(){
 		var noEmotions = true; 
-		for (var item in initialEmotions) {
-			console.log(item);
-			if (initialEmotions[item] !== 0)
+		for (var item in this.state.emotions) {
+			if (this.state.emotions[item] !== 0)
+			{
 				noEmotions = false; 
+				break;
+			}
 		}
 		
 		if(noEmotions){
 			return(
-				<span title={"none"}>
+				<span title="none">
 					<Gauge
 						value={0}
 						title={"none"}
