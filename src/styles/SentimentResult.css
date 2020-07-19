@@ -2,7 +2,7 @@
     width: 100%;
     z-index: 18;
     /* width: auto; */
-    min-height: 70%;
+    min-height: 30em;
     height: auto;
     /* margin: 0rem 5rem 0rem 5rem; */
     color: black;
@@ -19,7 +19,6 @@
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
-    overflow: auto;
 }
 
 .align-guage {
@@ -29,8 +28,10 @@
 }
 
 .tweet-text-wrapper {
+    min-width: 25em;
     width: 35%;
-    height: 100%;
+    min-height: 30em;
+    height: auto;
     padding: 10px 10px 10px 10px;
     border-right: lightgray;
     border-style: dotted;
@@ -39,15 +40,15 @@
 }
 
 .sentiment-display-wrapper {
-    width: 65%; 
-    min-height: 70%;
+    min-width: 25em; 
+    width: 65%;
+    min-height: 30em;
     height: auto;
     padding: 0px 0px 0px 0px;
     margin: 10px 0px 10px 0px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    overflow: auto;
 }
 
 .sent-title{
