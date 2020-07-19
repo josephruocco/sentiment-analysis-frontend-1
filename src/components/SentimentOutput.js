@@ -168,6 +168,26 @@ class SentimentOutput extends Component {
 		);
 	}
 
+	renderNoDocTonesView(){
+		var noEmotions = true; 
+		for (var item in initialEmotions) {
+			console.log(item);
+			if (initialEmotions[item] !== 0)
+				noEmotions = false; 
+		}
+		
+		if(noEmotions){
+			return(
+				<span title={"none"}>
+					<Gauge
+						value={0}
+						title={"none"}
+					/>
+				</span>
+			);
+		}
+	}
+
     renderView() {
 		return (
 			<div className="sentimentOutputBox">
@@ -175,6 +195,7 @@ class SentimentOutput extends Component {
 					{this.renderTweetTextView()}
 					
 					<div className="sentiment-display-wrapper">
+						{this.renderNoDocTonesView()}
 						{Object.keys(initialEmotions).map(emotion => {
 							if(this.state.emotions[emotion] > 0 ) {
 								return (
