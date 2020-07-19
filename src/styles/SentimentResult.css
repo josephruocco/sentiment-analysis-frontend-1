@@ -42,6 +42,41 @@
     flex-wrap: wrap;
 }
 
+.sent-title{
+    margin-bottom: 2rem;
+}
+
 .sentence-hover {
     cursor: pointer;
+}
+
+.joy {
+    font-weight: bold;
+    color: #388e3c;
+    /* color: #4caf50; */
+}
+
+.sadness {
+    font-weight: bold;
+    color: #2196f3;
+}
+
+.anger {
+    font-weight: bold;
+    color: #f50057;
+}
+
+.analytical{
+    font-weight: bold;
+    color: #7e57c2;
+}
+
+.confident {
+    font-weight: bold;
+    color: #00bcd4;
+}
+
+.tentative {
+    font-weight: bold;
+    color: #009688;
 }

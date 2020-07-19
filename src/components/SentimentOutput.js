@@ -70,14 +70,30 @@ class SentimentOutput extends Component {
 		}
 	}
 
+	getMaxScoreEmotion(tones_arr){
+		var max = 0.0;
+		var emotion = "";
+		tones_arr.forEach(item => {
+			if(item.score > max){
+				max = item.score; 
+				emotion = item.tone_id; 
+			}
+		}); 
+
+		return emotion;
+	}
+
 	renderTweetText(){
 		if(this.props.sentiment.sentences_tone){
 			return(
 				<div>
 					{
 						this.props.sentiment.sentences_tone.map((sent) => {
+							
+							var emotion = this.getMaxScoreEmotion(sent.tones); 					
+
 							return (
-								<p onClick={() => this.setSentenceTones(sent.tones)} className="sentence-hover">
+								<p onClick={() => this.setSentenceTones(sent.tones)} className={`sentence-hover ${emotion}`}>
 									{sent.text}
 								</p>
 							);
@@ -126,7 +142,7 @@ class SentimentOutput extends Component {
 			<div className="sentimentOutputBox">
 				<div className="center-output rounded">
 					<div className="tweet-text-wrapper">
-						<h3 onClick={() => this.setDocTones()} className="sentence-hover">Overall Tweet Sentiment</h3>
+						<h3 onClick={() => this.setDocTones()} className="sentence-hover sent-title">Overall Tweet Sentiment</h3>
 						{this.renderTweetText()}
 					</div>
 					
@@ -141,7 +157,7 @@ class SentimentOutput extends Component {
 			<div className="sentimentOutputBox">
 				<div className="center-output rounded">
 					<div className="tweet-text-wrapper">
-						<h3 onClick={() => this.setDocTones()} className="sentence-hover">Overall Tweet Sentiment</h3>
+						<h3 onClick={() => this.setDocTones()} className="sentence-hover sent-title">Overall Tweet Sentiment</h3>
 						{this.renderTweetText()}
 					</div>
 					
