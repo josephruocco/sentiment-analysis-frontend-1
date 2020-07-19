@@ -18,28 +18,28 @@ export default class Gauge extends Component {
 				currentValueText={`${this.props.title}: ${num}%`}
 				customSegmentLabels={[
 			{
-				text: "Very Low",
+				text: "Unlikely",
 				position: "INSIDE",
 				color: "#555",
 			},
 			{
-				text: "Low",
+				text: "Unlikely",
 				position: "INSIDE",
 				color: "#555"
 			},
 			{
-				text: "Ok",
+				text: "Low",
 				position: "INSIDE",
 				color: "#555",
 				fontSize: "19px"
 			},
 			{
-				text: "High",
+				text: "Maybe",
 				position: "INSIDE",
 				color: "#555"
 			},
 			{
-				text: "Very High",
+				text: "High",
 				position: "INSIDE",
 				color: "#555"
 			}
