@@ -30,7 +30,7 @@ html, body {
     position: fixed;
     width: 100%; 
     overflow: hidden;
-    filter: grayscale(70%);
+    filter: grayscale(100%);
     opacity: .6;
     top: 30%;
     left: 50%;

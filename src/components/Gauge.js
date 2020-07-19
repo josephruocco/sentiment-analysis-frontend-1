@@ -4,8 +4,13 @@ import ReactSpeedometer from "react-d3-speedometer";
 export default class Gauge extends Component {
     render() {
 	return (
+		<div style={{
+			width: "20em",
+			height: "19em"
+		}}>
 		<ReactSpeedometer
-            width={325}
+			dimensionUnit="em"
+			fluidWidth={true}
             needleHeightRatio={0.7}
 			value={this.props.value * 1000}
 			currentValueText={`${this.props.title}: ${this.props.value * 100}%`}
@@ -43,6 +48,7 @@ export default class Gauge extends Component {
             needleColor={"#90f2ff"}
             textColor={"#000000"}
 		/>
+		</div>
 	);
     }
 }
