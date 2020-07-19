@@ -34,8 +34,7 @@ class Landing extends Component {
             <div className="landing-body">
                 <img src={bgGrid} className="bg-lines" alt="lines-image"/>
                 <img  src={bgImage} className="bg-content" alt="bg-image"/>
-                <div className="main-content"> 
-                    <h1 className="appTitle">Sentiment Analysis</h1>  
+                <div className="main-content">   
                     <div className="contentBody">
                         <InputBox saveTweetUrlToLanding={this.setTweetUrl.bind(this)} saveSentimentToLanding={this.setResult.bind(this)}/>
                         <SentimentOutput sentiment={this.state.result}/>

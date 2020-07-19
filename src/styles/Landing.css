@@ -8,7 +8,7 @@ html, body {
 .landing-body {
     width: 100%;
     min-height: 100vh;
-    height: 100vh;
+    height: auto;
     color: #585858;
 }
 
@@ -47,13 +47,14 @@ html, body {
 
 
 .contentBody {
+    position: relative;
     width: auto;
     height: 100%;
     display: flex; 
     justify-content: space-around;
     align-content: center;
     flex-direction: column;
-    margin: 1rem 1rem 1rem 1rem;
+    margin: 5rem auto 5rem auto;
 }
 
 
