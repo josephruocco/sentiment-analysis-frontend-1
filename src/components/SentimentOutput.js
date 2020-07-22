@@ -225,8 +225,8 @@ class SentimentOutput extends Component {
 				<div className="center-output rounded">
 					<div className="tweet-text-wrapper">
 						<p className="usage">
-							Tweet displayed below. Click on each line to see the sentimenet per line. 
-							Hover over each line below to see the sentiment with highest score.
+							Tweet displayed below. Click on each line to see the sentimenet and score displayed on the right. 
+							Hover over each colored line below to see its sentiment.
 							Hover over each speedometer to learn more about each sentiment. 
 						</p>
 						<h3>Tweet Text</h3>
