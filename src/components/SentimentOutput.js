@@ -147,11 +147,17 @@ class SentimentOutput extends Component {
 		var docTones = this.getMaxScoreEmotion(this.props.sentiment.document_tone.tones);
 		return(
 			<div className="tweet-text-wrapper">
+				<p className="usage">
+					Tweet displayed below. Click on each line to see the sentimenet per line. 
+					Hover over each line below to see the sentiment with highest score.
+					Hover over each speedometer to learn more about each sentiment. 
+				</p>
 				<h3 
 					onClick={() => this.setDocTones()} 
 					className={`sentence-hover sent-title ${docTones}`}
 					title={docTones}
 				>Overall Tweet Sentiment</h3>
+				
 				{this.getTweetText()}
 			</div>
 		);
@@ -181,12 +187,7 @@ class SentimentOutput extends Component {
 		
 		if(noEmotions){
 			return(
-				<span title="none">
-					<Gauge
-						value={0}
-						title={"none"}
-					/>
-				</span>
+				<p className="no-sentiment">Watson was not able to detect any sentiments. </p>
 			);
 		}
 	}
@@ -223,6 +224,11 @@ class SentimentOutput extends Component {
 			<div className="sentimentOutputBox">
 				<div className="center-output rounded">
 					<div className="tweet-text-wrapper">
+						<p className="usage">
+							Tweet displayed below. Click on each line to see the sentimenet per line. 
+							Hover over each line below to see the sentiment with highest score.
+							Hover over each speedometer to learn more about each sentiment. 
+						</p>
 						<h3>Tweet Text</h3>
 					</div>
 					<div className="sentiment-display-wrapper">
