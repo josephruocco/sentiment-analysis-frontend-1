@@ -20,6 +20,12 @@ class WatsonInfo extends Component {
                         <tbody>
                             <tr>
                                 <th scope="row" className="sentiment-type">
+                                    score % 
+                                </th>
+                                <td className="sentiment-def align-middle">{SentimenDef.percentage}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" className="sentiment-type">
                                     <SentimentVerySatisfiedRoundedIcon
                                         style={{ 
                                             fontSize: 90,
