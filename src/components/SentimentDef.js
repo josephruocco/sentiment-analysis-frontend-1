@@ -1,5 +1,6 @@
 export const SentimenDef = {
     "source": "https://cloud.ibm.com/docs/tone-analyzer?topic=tone-analyzer-utgpe",
+    "percentage": "A tone whose score is less than 50% is omitted, indicating that the emotion is unlikely to be perceived in the content. A score greater than 75% indicates a high likelihood that the tone is perceived.",
     "anger": "Anger is evoked due to injustice, conflict, humiliation, negligence, or betrayal. If anger is active, the individual attacks the target, verbally or physically. If anger is passive, the person silently sulks and feels tension and hostility. (An emotional tone.)",
     "fear": "Fear is a response to impending danger. It is a survival mechanism that is triggered as a reaction to some negative stimulus. Fear can be a mild caution or an extreme phobia. (An emotional tone.)",
     "joy": "Joy (or happiness) has shades of enjoyment, satisfaction, and pleasure. Joy brings a sense of well-being, inner peace, love, safety, and contentment. (An emotional tone.)",
