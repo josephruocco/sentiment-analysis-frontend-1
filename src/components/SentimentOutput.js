@@ -3,6 +3,18 @@ import Gauge from "./Gauge";
 import {SentimenDef} from './SentimentDef';
 import '../styles/SentimentResult.css'
 
+import {
+    Accordion,
+    AccordionItem,
+    AccordionItemHeading,
+    AccordionItemButton,
+    AccordionItemPanel,
+} from 'react-accessible-accordion';
+
+// Demo styles, see 'Styles' section below for some notes on use.
+import 'react-accessible-accordion/dist/fancy-example.css';
+
+
 const initialEmotions = {
     sadness: 0,
     analytical: 0,
@@ -22,12 +34,9 @@ class SentimentOutput extends Component {
 			sentenceId: -1,
 			emotions: { ...initialEmotions }
 		};
-
 		this.renderView = this.renderView.bind(this);
-		this.setSentenceTones = this.setSentenceTones.bind(this);
-		this.setDocTones = this.setDocTones.bind(this);
-		this.renderTweetTextView = this.renderTweetTextView.bind(this);
 		this.renderNoDocTonesView = this.renderNoDocTonesView.bind(this);
+	
     }
 
     setEmotions = () => {
@@ -49,7 +58,7 @@ class SentimentOutput extends Component {
 
 
     componentDidMount = () => {
-		if(this.props.sentment && this.props.sentiment["document_tone"]) {
+		if(this.props.sentiment && this.props.sentiment["document_tone"]) {
 			this.setEmotions();
 		}
     }
@@ -58,163 +67,137 @@ class SentimentOutput extends Component {
 		if (this.props.sentiment !== prevProps.sentiment && this.props.sentiment && this.props.sentiment["document_tone"]) {
 			this.setEmotions();
 		}
-	};
+    };
 
-	setSentenceTones(tones_arr) {
-		if(tones_arr){
-			this.setState({documentView: false, sentenceTones: tones_arr}); 
-		}
+    renderNoDocTonesView(){
+        var noEmotions = true; 
+        for (var item in this.state.emotions) {
+	    if (this.state.emotions[item] !== 0)
+	    {
+	        noEmotions = false; 
+	        break;
+	    }
+        }
+        
+        if(noEmotions){
+	    return(
+	        <p className="no-sentiment">Watson was not able to detect any sentiments. </p>
+	    );
+        }
 	}
 
-	setDocTones(){
-		if(!this.state.documentView){
-			this.setState({documentView: true}); 
-		}
-	}
-
-	getMaxScoreEmotion(tones_arr){
-		var max = 0.0;
-		var emotion = "";
-		tones_arr.forEach(item => {
-			if(item.score > max){
-				max = item.score; 
-				emotion = item.tone_id; 
-			}
-		}); 
-
-		return emotion;
-	}
-
-	getTweetText(){
-		if(this.props.sentiment.sentences_tone){
-			return(
-				<div>
-					{
-						this.props.sentiment.sentences_tone.map((sent) => {
-							
-							var emotion = this.getMaxScoreEmotion(sent.tones); 					
-
-							return (
-								<p 
-								onClick={() => this.setSentenceTones(sent.tones)} 
-								className={`sentence-hover ${emotion}`}
-								title={emotion}>
-									{sent.text}
-								</p>
-							);
-						 })
-					}
-				</div>
-			);
-		} 
-
-		var docTones = this.getMaxScoreEmotion(this.props.sentiment.document_tone.tones);
-		return(
-			<p className={docTones} title={docTones}>{this.props.sentiment.tweet_text}</p>
-		);
-	}
-
-	renderSentenceTonesView(){
-		if(this.state.sentenceTones.length > 0 ){
-			return(
-				<div className="sentiment-display-wrapper">
-					{this.state.sentenceTones.map((emotion) => {
-						return (
-							<span title={SentimenDef[emotion.tone_id]}>
-								<Gauge
-									value={emotion.score}
-									title={emotion.tone_name}
-								/>
-							</span>
-							
-						);
-					})}
-				</div>
-			);
-		} 
-		return(
-			<div className="sentiment-display-wrapper">
-				<Gauge
-					value={0}
-					title={"none"}
-				/>
-			</div>
-		);
-		
-	}
-
-	renderTweetTextView(){
-		var docTones = this.getMaxScoreEmotion(this.props.sentiment.document_tone.tones);
-		return(
-			<div className="tweet-text-wrapper">
-				<p className="usage">
-					Tweet displayed below. Click on each line to see the sentimenet per line. 
-					Hover over each line below to see the sentiment with highest score.
-					Hover over each speedometer to learn more about each sentiment. 
-				</p>
-				<h3 
-					onClick={() => this.setDocTones()} 
-					className={`sentence-hover sent-title ${docTones}`}
-					title={docTones}
-				>Overall Tweet Sentiment</h3>
-				
-				{this.getTweetText()}
-			</div>
-		);
-	}
-
-	renderSentenceView(){
-		return (
-			<div className="sentimentOutputBox">
-				<div className="center-output rounded">
-					{this.renderTweetTextView()}
-					
-					{this.renderSentenceTonesView()}
-				</div>
-			</div>
-		);
-	}
-
-	renderNoDocTonesView(){
-		var noEmotions = true; 
-		for (var item in this.state.emotions) {
-			if (this.state.emotions[item] !== 0)
-			{
-				noEmotions = false; 
-				break;
-			}
-		}
-		
-		if(noEmotions){
-			return(
-				<p className="no-sentiment">Watson was not able to detect any sentiments. </p>
-			);
-		}
-	}
 
     renderView() {
+    		 
+    		
+    	const data =  this.props.sentiment.sentences_tone ;
+	var sentences; 
+	if(data){
+	    sentences = data.map(info =>
+		                 {
+                                     return (
+                                         <Accordion allowMultipleExpanded allowZeroExpanded>
+                                           <AccordionItem uuid="c">
+					     <AccordionItemHeading>
+					       <AccordionItemButton>
+					         {info.text}
+					       </AccordionItemButton>
+					     </AccordionItemHeading>
+					     <AccordionItemPanel>
+					       {info.tones.length === 0 ? <p>No Sentiments Found</p> : info.tones.map( tones =>
+	                                                                                                               <span title={SentimenDef[tones.tone_id]}>
+	                                                                                                                 <Gauge
+	                                                                                                                   value={tones.score}
+	                                                                                                                   title={tones.tone_name}
+	                                                                                                                 />
+	                                                                                                               </span>
+                                                                                                                     )
+					       
+
+					       }
+					     </AccordionItemPanel>
+				           </AccordionItem>
+				         </Accordion>
+
+                                     );
+		                 } );
+
+	}
+	else {
+	    return (
+		<div className="sentimentOutputBox">
+		  <div className="center-output rounded">
+		    <Accordion preExpanded={['d']}  allowMultipleExpanded allowZeroExpanded>
+		      <AccordionItem uuid="d">
+			<AccordionItemHeading>
+			  <AccordionItemButton>
+			    No Sentence Tones Available
+			  </AccordionItemButton>
+			</AccordionItemHeading>
+			<AccordionItemPanel>
+			  <span>
+			    <Gauge
+			      value={0}
+			      title={`waiting for input`}
+			    />	
+			  </span>
+			</AccordionItemPanel>
+		      </AccordionItem>
+		    </Accordion>
+		  </div>
+		</div>
+	    )
+	}
+
+		const doc = this.props.sentiment.document_tone;
+
 		return (
 			<div className="sentimentOutputBox">
 				<div className="center-output rounded">
-					{this.renderTweetTextView()}
-					
-					<div className="sentiment-display-wrapper">
-						{this.renderNoDocTonesView()}
-						{Object.keys(initialEmotions).map(emotion => {
-							if(this.state.emotions[emotion] > 0 ) {
-								return (
-									<span title={SentimenDef[emotion]}>
-										<Gauge
-											value={this.state.emotions[emotion]}
-											title={`${emotion}`}
-											key={emotion}
-										/>
-									</span>
-								);
-							}
-						})}
-					</div>
+				     	<Accordion preExpanded={['a']} allowMultipleExpanded allowZeroExpanded>
+				<AccordionItem uuid="a">
+				     <AccordionItemHeading>
+				       <AccordionItemButton>
+                                         Watson Document Analysis
+				       </AccordionItemButton>
+				     </AccordionItemHeading>
+				     <AccordionItemPanel>
+				     {this.renderNoDocTonesView()}
+				       { this.state.emotions.length ===  0?  <p>No Sentiments Found</p> :
+				         Object.keys(initialEmotions).map(emotion => {
+					     if(this.state.emotions[emotion] > 0 ) {
+						 return (
+						     <span title={SentimenDef[emotion]}>
+						       <Gauge
+							 value={this.state.emotions[emotion]}
+							 title={`${emotion}`}
+							 key={emotion}
+						       />
+						     </span>
+
+						 );
+					     }
+					     
+					 })
+				       }
+                                     </AccordionItemPanel>
+				</AccordionItem>
+                                        </Accordion>
+                                  <Accordion preExpanded={['b']}  allowMultipleExpanded allowZeroExpanded>
+                                    <AccordionItem uuid="b">
+                                      <AccordionItemHeading>
+                                        <AccordionItemButton>
+	                                  Watson Sentence Output
+                                        </AccordionItemButton>
+                                      </AccordionItemHeading>
+                                      <AccordionItemPanel>
+                                        {sentences === 'undefined'? <p>No Sentence Tones Available</p> : sentences}
+                                      </AccordionItemPanel>
+                                    </AccordionItem>
+					 </Accordion>
+				
 				</div>
+				
 			</div>
 		);
 	}
@@ -223,21 +206,24 @@ class SentimentOutput extends Component {
 		return (
 			<div className="sentimentOutputBox">
 				<div className="center-output rounded">
-					<div className="tweet-text-wrapper">
-						<p className="usage">
-							Tweet displayed below. Click on each line to see the sentimenet and score displayed on the right. 
-							Hover over each colored line below to see its sentiment.
-							Hover over each speedometer to learn more about each sentiment. 
-						</p>
-						<h3>Tweet Text</h3>
-					</div>
-					<div className="sentiment-display-wrapper">
-						<Gauge
-							value={0}
-							title={`waiting for input`}
-						/>
-					</div>
-				</div>
+				<Accordion preExpanded={['a']}  allowMultipleExpanded allowZeroExpanded>
+				<AccordionItem uuid="a">
+				     <AccordionItemHeading>
+				       <AccordionItemButton>
+                                         Waiting for Tweet Input...
+				       </AccordionItemButton>
+				     </AccordionItemHeading>
+				  <AccordionItemPanel>
+                                    <span>
+                                      <Gauge
+                                        value={0}
+                                        title={`waiting for input`}
+                                      />
+                                    </span>
+				  </AccordionItemPanel>
+				</AccordionItem>
+                                </Accordion>
+                                </div>
 			</div>
 		);
 	}
