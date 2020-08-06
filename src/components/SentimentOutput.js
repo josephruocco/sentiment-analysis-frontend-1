@@ -81,7 +81,7 @@ class SentimentOutput extends Component {
         
         if(noEmotions){
 	    return(
-	        <p className="no-sentiment">Watson was not able to detect any sentiments. </p>
+	        <p className="no-sentiment">No Document Tones Available</p>
 	    );
         }
 	}
@@ -103,13 +103,13 @@ class SentimentOutput extends Component {
 					       </AccordionItemButton>
 					     </AccordionItemHeading>
 					     <AccordionItemPanel>
-					       {info.tones.length === 0 ? <p>No Sentiments Found</p> : info.tones.map( tones =>
-	                                                                                                               <span title={SentimenDef[tones.tone_id]}>
-	                                                                                                                 <Gauge
-	                                                                                                                   value={tones.score}
-	                                                                                                                   title={tones.tone_name}
-	                                                                                                                 />
-	                                                                                                               </span>
+					       {info.tones.length === 0 ? <p className="no-sentiment">No Sentiments Found</p> : info.tones.map( tones =>
+	                                                                                                                                        <span title={SentimenDef[tones.tone_id]}>
+	                                                                                                                                          <Gauge
+	                                                                                                                                            value={tones.score}
+	                                                                                                                                            title={tones.tone_name}
+	                                                                                                                                          />
+	                                                                                                                                        </span>
                                                                                                                      )
 					       
 
@@ -147,7 +147,7 @@ class SentimentOutput extends Component {
 		    </AccordionItemHeading>
 		    <AccordionItemPanel>
 		      {this.renderNoDocTonesView()}
-		      { this.state.emotions.length ===  0?  <p>No Sentiments Found</p> :
+		      { this.state.emotions.length ===  0?  <p className="no-sentiment">No Sentiments Found</p> :
 			Object.keys(initialEmotions).map(emotion => {
 			    if(this.state.emotions[emotion] > 0 ) {
 				return (
@@ -177,7 +177,7 @@ class SentimentOutput extends Component {
                       </AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
-                      {data? sentences :  <p>No Sentence Tones Available</p> }
+                      {data? sentences :  <p className="no-sentiment">No Sentence Tones Available</p> }
                     </AccordionItemPanel>
                   </AccordionItem>
 		</Accordion>
@@ -208,7 +208,7 @@ class SentimentOutput extends Component {
 				
 				  </AccordionItemPanel>
 				</AccordionItem>
-					 </Accordion>
+                                </Accordion>
 
 				</div>
 			</div>

@@ -35,3 +35,14 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+#accordion__panel-b {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.no-sentiment {
+    justify-content: center;
+    display: flex;
+} 
