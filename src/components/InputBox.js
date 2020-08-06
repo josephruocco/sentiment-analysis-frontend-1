@@ -16,6 +16,8 @@ class InputBox extends Component {
 
     validateTweetUrl(url){
         // accepts https://twitter.com/username/status/id-number
+        url = url.replace(/\s/g, '');
+        console.log(url);
         const re = /^https:\/\/twitter.com\/\w+\/status\/[0-9?s=]{10,30}$/;
         return re.test(String(url).toLowerCase());
     }
