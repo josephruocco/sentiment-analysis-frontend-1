@@ -81,7 +81,6 @@ class SentimentOutput extends Component {
 				emotion = item.tone_id; 
 			}
 		}); 
-
 		return emotion;
 	}
 
