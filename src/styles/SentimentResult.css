@@ -30,8 +30,19 @@
     width: 100px;
 }
 
-#accordion__panel-a , #accordion__panel-c, #accordion__panel-d {
+#accordion__panel-a , #accordion__panel-c, #accordion__panel-d, #accordion__panel-e{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
+
+#accordion__panel-b {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.no-sentiment {
+    justify-content: center;
+    display: flex;
+} 

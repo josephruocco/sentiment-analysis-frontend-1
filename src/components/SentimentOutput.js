@@ -81,15 +81,14 @@ class SentimentOutput extends Component {
         
         if(noEmotions){
 	    return(
-	        <p className="no-sentiment">Watson was not able to detect any sentiments. </p>
+	        <p className="no-sentiment">No Document Tones Available</p>
 	    );
         }
 	}
 
 
     renderView() {
-    		 
-    		
+	
     	const data =  this.props.sentiment.sentences_tone ;
 	var sentences; 
 	if(data){
@@ -104,13 +103,13 @@ class SentimentOutput extends Component {
 					       </AccordionItemButton>
 					     </AccordionItemHeading>
 					     <AccordionItemPanel>
-					       {info.tones.length === 0 ? <p>No Sentiments Found</p> : info.tones.map( tones =>
-	                                                                                                               <span title={SentimenDef[tones.tone_id]}>
-	                                                                                                                 <Gauge
-	                                                                                                                   value={tones.score}
-	                                                                                                                   title={tones.tone_name}
-	                                                                                                                 />
-	                                                                                                               </span>
+					       {info.tones.length === 0 ? <p className="no-sentiment">No Sentiments Found</p> : info.tones.map( tones =>
+	                                                                                                                                        <span title={SentimenDef[tones.tone_id]}>
+	                                                                                                                                          <Gauge
+	                                                                                                                                            value={tones.score}
+	                                                                                                                                            title={tones.tone_name}
+	                                                                                                                                          />
+	                                                                                                                                        </span>
                                                                                                                      )
 					       
 
@@ -123,83 +122,70 @@ class SentimentOutput extends Component {
 		                 } );
 
 	}
-	else {
-	    return (
-		<div className="sentimentOutputBox">
-		  <div className="center-output rounded">
-		    <Accordion preExpanded={['d']}  allowMultipleExpanded allowZeroExpanded>
-		      <AccordionItem uuid="d">
-			<AccordionItemHeading>
-			  <AccordionItemButton>
-			    No Sentence Tones Available
-			  </AccordionItemButton>
-			</AccordionItemHeading>
-			<AccordionItemPanel>
-			  <span>
-			    <Gauge
-			      value={0}
-			      title={`waiting for input`}
-			    />	
-			  </span>
-			</AccordionItemPanel>
-		      </AccordionItem>
-		    </Accordion>
-		  </div>
-		</div>
-	    )
-	}
 
-		const doc = this.props.sentiment.document_tone;
+	return (
+	    <div className="sentimentOutputBox">
+	      <div className="center-output rounded">
+                <Accordion preExpanded={['e']}  allowMultipleExpanded allowZeroExpanded>
+                  <AccordionItem uuid="e">
+                    <AccordionItemHeading>
+                      <AccordionItemButton>
+	                Tweet Text 
+                      </AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel>
+                      {this.props.sentiment.tweet_text }
+                    </AccordionItemPanel>
+                  </AccordionItem>
+		</Accordion>
+		<Accordion preExpanded={['a']} allowMultipleExpanded allowZeroExpanded>
+		  <AccordionItem uuid="a">
+		    <AccordionItemHeading>
+		      <AccordionItemButton>
+                        Watson Document Analysis
+		      </AccordionItemButton>
+		    </AccordionItemHeading>
+		    <AccordionItemPanel>
+		      {this.renderNoDocTonesView()}
+		      { this.state.emotions.length ===  0?  <p className="no-sentiment">No Sentiments Found</p> :
+			Object.keys(initialEmotions).map(emotion => {
+			    if(this.state.emotions[emotion] > 0 ) {
+				return (
+				    <span title={SentimenDef[emotion]}>
+				      <Gauge
+					value={this.state.emotions[emotion]}
+					title={`${emotion}`}
+					key={emotion}
+				      />
+				    </span>
 
-		return (
-			<div className="sentimentOutputBox">
-				<div className="center-output rounded">
-				     	<Accordion preExpanded={['a']} allowMultipleExpanded allowZeroExpanded>
-				<AccordionItem uuid="a">
-				     <AccordionItemHeading>
-				       <AccordionItemButton>
-                                         Watson Document Analysis
-				       </AccordionItemButton>
-				     </AccordionItemHeading>
-				     <AccordionItemPanel>
-				     {this.renderNoDocTonesView()}
-				       { this.state.emotions.length ===  0?  <p>No Sentiments Found</p> :
-				         Object.keys(initialEmotions).map(emotion => {
-					     if(this.state.emotions[emotion] > 0 ) {
-						 return (
-						     <span title={SentimenDef[emotion]}>
-						       <Gauge
-							 value={this.state.emotions[emotion]}
-							 title={`${emotion}`}
-							 key={emotion}
-						       />
-						     </span>
-
-						 );
-					     }
-					     
-					 })
-				       }
-                                     </AccordionItemPanel>
-				</AccordionItem>
-                                        </Accordion>
-                                  <Accordion preExpanded={['b']}  allowMultipleExpanded allowZeroExpanded>
-                                    <AccordionItem uuid="b">
-                                      <AccordionItemHeading>
-                                        <AccordionItemButton>
-	                                  Watson Sentence Output
-                                        </AccordionItemButton>
-                                      </AccordionItemHeading>
-                                      <AccordionItemPanel>
-                                        {sentences === 'undefined'? <p>No Sentence Tones Available</p> : sentences}
-                                      </AccordionItemPanel>
-                                    </AccordionItem>
-					 </Accordion>
-				
-				</div>
-				
-			</div>
-		);
+				);
+			    }
+			    
+			})
+		      }
+                    
+                    </AccordionItemPanel>
+                    
+		  </AccordionItem>
+                </Accordion>
+                <Accordion preExpanded={['b']}  allowMultipleExpanded allowZeroExpanded>
+                  <AccordionItem uuid="b">
+                    <AccordionItemHeading>
+                      <AccordionItemButton>
+	                Watson Sentence Analysis
+                      </AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel>
+                      {data? sentences :  <p className="no-sentiment">No Sentence Tones Available</p> }
+                    </AccordionItemPanel>
+                  </AccordionItem>
+		</Accordion>
+		
+	      </div>
+	      
+	    </div>
+	);
 	}
 
     waitRender(){
@@ -218,12 +204,13 @@ class SentimentOutput extends Component {
                                       <Gauge
                                         value={0}
                                         title={`waiting for input`}
-                                      />
-                                    </span>
+                                      /> </span>
+				
 				  </AccordionItemPanel>
 				</AccordionItem>
                                 </Accordion>
-                                </div>
+
+				</div>
 			</div>
 		);
 	}
